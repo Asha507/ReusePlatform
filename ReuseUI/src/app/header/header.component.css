@@ -1,7 +1,7 @@
 /* Style the header with a grey background and some padding */
 .header {
     overflow: hidden;
-    background-color: rgba(88, 167, 247, 0.788);
+    background-color: rgba(213, 215, 218, 0.329);
     padding: 10px 30px;
   }
   
@@ -21,7 +21,7 @@
   .header a.logo {
     font-size: 25px;
     /* font-weight: bold; */
-    color: white;
+    color: #312A25 !Important;
     /* font-style: italic; */
     font-family: sans-serif;
   }
@@ -29,13 +29,13 @@
   /* Change the background color on mouse-over */
   .header a:hover {
     background-color:  rgba(50, 149, 248, 0.788);
-    color: white;
+    color: #999999;
   }
   
   /* Style the active/current link*/
   .header a.active {
     background-color: dodgerblue;
-    color: white;
+    color: #999999;
   }
   
   /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
