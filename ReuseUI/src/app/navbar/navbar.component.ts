@@ -8,7 +8,14 @@ import * as $ from 'jquery';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  name:string;
+  designation:string;
+  vamid:string;
+  constructor() {
+    this.name=sessionStorage.getItem("Name");
+    this.designation=sessionStorage.getItem("Designation");
+    this.vamid=sessionStorage.getItem("VamID");
+   }
 
   ngOnInit() {
     $(document).ready(function(){

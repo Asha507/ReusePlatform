@@ -7,7 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule, Routes } from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
+const routes:Routes=[
+  { path: '', redirectTo: '/Dashboard', pathMatch: 'full' }
+ ];
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +25,11 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule,
+    RouterModule.forRoot([]),
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
