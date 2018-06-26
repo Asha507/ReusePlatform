@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/filter';
 import {Base64} from 'js-base64';
-
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,7 +10,7 @@ import {Base64} from 'js-base64';
 export class HeaderComponent implements OnInit {
 
   constructor(private route:ActivatedRoute) {
-    this.route.queryParams.filter(params=>'param' in params)
+    this.route.queryParams.pipe(filter(params=>'param' in params))
     .subscribe(params => {
       if(undefined != params)
       {
