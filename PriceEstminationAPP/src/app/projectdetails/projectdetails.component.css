@@ -12,3 +12,11 @@
 {
    height: calc(2.25rem + 14px) !important;
 }
+.custombutton
+{
+    margin: 1%;
+}
+.cusbtntrash
+{
+    padding:12% 13% 11% 15%;
+}

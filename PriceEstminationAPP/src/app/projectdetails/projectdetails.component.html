@@ -26,14 +26,14 @@
             <label>Client/Account </label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Client Name" class="form-control" [(ngModel)]="client">
+            <input type=text placeholder="Client Name" class="form-control" [(ngModel)]="projectDetails.Client">
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-2">
             <label>Project Name</label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Project Name" class="form-control" [(ngModel)]="project">
+            <input type=text placeholder="Project Name" class="form-control" [(ngModel)]="projectDetails.Project">
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -42,14 +42,14 @@
             <label>Product Name </label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Product Name" class="form-control" [(ngModel)]="product">
+            <input type=text placeholder="Product Name" class="form-control" [(ngModel)]="projectDetails.Product">
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-2">
             <label>Date </label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Date" class="form-control" [(ngModel)]="CreatedDate">
+            <input type=text placeholder="Date" class="form-control" [(ngModel)]="projectDetails.CreatedDate">
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -58,14 +58,14 @@
             <label>Project Manager</label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="PM Name" class="form-control" [(ngModel)]="ProjectManager">
+            <input type=text placeholder="PM Name" class="form-control" [(ngModel)]="projectDetails.ProjectManager">
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-2">
             <label>Email ID </label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Email ID" class="form-control" [(ngModel)]="PMEmailID">
+            <input type=text placeholder="Email ID" class="form-control" [(ngModel)]="projectDetails.PMEmailID">
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -74,32 +74,32 @@
             <label>Sizing Done By</label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Name" class="form-control" [(ngModel)]="SizingBy">
+            <input type=text placeholder="Name" class="form-control" [(ngModel)]="projectDetails.SizingBy">
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-2">
             <label>Email ID </label>
           </div>
           <div class="col-md-3">
-            <input type=text placeholder="Email ID" class="form-control" [(ngModel)]="SizedByEmailID">
+            <input type=text placeholder="Email ID" class="form-control" [(ngModel)]="projectDetails.SizedByEmailID">
           </div>
         </div>
         <div class="clear-fix"></div>
         <div class="row">
-            <div class="col-md-2">
-              <label>Quote Created By</label>
-            </div>
-            <div class="col-md-3">
-              <input type=text placeholder="Name" class="form-control" [(ngModel)]="QuoteCreatedBy">
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-2">
-              <label>Email ID </label>
-            </div>
-            <div class="col-md-3">
-              <input type=text placeholder="Email ID" class="form-control" [(ngModel)]="QuotedByEmailID">
-            </div>
+          <div class="col-md-2">
+            <label>Quote Created By</label>
           </div>
+          <div class="col-md-3">
+            <input type=text placeholder="Name" class="form-control" [(ngModel)]="projectDetails.QuoteCreatedBy">
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <label>Email ID </label>
+          </div>
+          <div class="col-md-3">
+            <input type=text placeholder="Email ID" class="form-control" [(ngModel)]="projectDetails.QuotedByEmailID">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -157,64 +157,53 @@
           <div class="col-md-3">
             <label>Size</label>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label>Description</label>
           </div>
           <div class="col-md-2">
-            <label>Price</label>
+            <label>Price/Hour</label>
           </div>
+          <div class="col-md-1">
+              <label>Delete Resource</label>
+            </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <select class="form-control customdropdown">
 
+        <div class="row" *ngFor="let resourceRow of resourceDetails;let i=index">
+          <div class="col-md-3">
+            <select class="form-control customdropdown" [(ngModel)]="resourceRow.Type" (change)="GetResourceSizes($event.target.value,i)">
+              <option value="Select">Select</option> 
+                <option *ngFor="let resource of resourcesList" >
+                    {{resource.Type}}
+                </option>
             </select>
           </div>
           <div class="col-md-3">
-            <select class="form-control customdropdown">
-
+            <select class="form-control customdropdown" [(ngModel)]="resourceRow.Size" (change)="GetResourceSizeDescription($event.target.value,resourceRow)">
+                <option *ngIf = "resourceRow.Sizes.length==0" value="N/A">N/A</option> 
+                <option *ngIf = "resourceRow.Sizes.length!=0" value="Select">Select</option> 
+                <option *ngFor="let size of resourceRow.Sizes" >
+                    {{size.Size}}
+                </option>
             </select>
           </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control"/>
+          <div class="col-md-3">
+            <input type="text" class="form-control" [(ngModel)]="resourceRow.Description" readonly />
           </div>
           <div class="col-md-2">
-              <input type="text" class="form-control"/>
+            <input type="text" class="form-control" [(ngModel)]="resourceRow.Price" />
           </div>
-        </div>
-        <div class="clear-fix"></div>
-        <div class="row">
+          <div class="col-md-1">    
+                  <button (click)="Delete()" class="btn btn-danger cusbtntrash">
+                  <i class="glyphicon glyphicon-trash"></i></button>
+          </div>
+          <div class="clear-fix"></div>
+        </div>      
           
-          <a class='col-md-2' href="#">Add New Resource</a>
-
+        <div class="row">
+        <input type="button" class="btn btn-primary custombutton" value="Add New Resource" (click)="addNewResource()"/>
+          <!-- <a class='col-md-2' href="#" >Add New Resource</a> -->
         </div>
-        <!-- <div class="row">
-            <div class="col-md-3">
-              <select class="form-control">
-
-              </select>
-            </div>
-            <div class="col-md-3">
-              <select class="form-control">
-
-              </select>
-            </div>
-            <div class="col-md-3">
-              <select class="form-control">
-   
-              </select>
-            </div>
-            <div class="col-md-1">
-              <select class="form-control">
-
-              </select>
-            </div>
-            <div class="col-md-2">
-              <select class="form-control">
-
-              </select>
-            </div>
-          </div> -->
       </div>
     </div>
+
   </div>

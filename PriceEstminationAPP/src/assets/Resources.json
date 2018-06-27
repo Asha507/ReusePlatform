@@ -3,23 +3,23 @@
 			"Type": "Virtual Machine",
 			"Sizes": [{
 					"Size": "D2 - 2 Core/7 GB/128 GB HDD/Windows",
-					"Description": ""
+					"Description": "D2"
 				},
 				{
 					"Size": "D11 - 2 Core/14 GB/128 GB HDD/Windows",
-					"Description": ""
+					"Description": "D11"
 				},
 				{
 					"Size": "D3 - 4 Core/14 GB/128 GB HDD/Windows",
-					"Description": ""
+					"Description": "D3"
 				},
 				{
 					"Size": "B2 - 2 Core/8 GB/128 GB HDD/Windows",
-					"Description": ""
+					"Description": "B2"
 				},
 				{
 					"Size": "B4 - 4 Core/16 GB/128 GB HDD/Windows",
-					"Description": ""
+					"Description": "B4"
 				},
 				{
 					"Size": "A2 - 2 Core/16 GB/128 GB HDD/Windows",

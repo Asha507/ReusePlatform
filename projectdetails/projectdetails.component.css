@@ -1,0 +1,14 @@
+.custompanel
+{
+    margin :3% 0% 0% 0%;
+    width: 100%;
+    font-size:14px;
+}
+.subpanelheading
+{
+    background-color: white;
+}
+.customdropdown
+{
+   height: calc(2.25rem + 14px) !important;
+}
