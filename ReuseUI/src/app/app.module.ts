@@ -12,7 +12,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 const routes:Routes=[
-  { path: '', redirectTo: '/Dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: '/Dashboard', pathMatch: 'full' },
+  {path:'Dashboard',component:DashboardComponent}
  ];
  
 @NgModule({
@@ -27,7 +28,7 @@ const routes:Routes=[
   imports: [
     BrowserModule,
     RouterModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(routes),
     FormsModule,
     HttpModule
   ],
